@@ -1,0 +1,109 @@
+[debug] > Exec(early(addDefaultCommands), None, None)
+[debug] > Exec(addDefaultCommands, None, None)
+[debug] > Exec(early(initialize), None, None)
+[debug] > Exec(initialize, None, None)
+[debug] > Exec(early(addPluginSbtFile="""C:\Users\master\AppData\Local\Temp\idea.sbt"""), None, None)
+[debug] > Exec(addPluginSbtFile="""C:\Users\master\AppData\Local\Temp\idea.sbt""", None, None)
+[debug] > Exec(boot, None, None)
+[debug] > Exec(writeSbtVersion, None, None)
+[debug] > Exec(reload, None, None)
+[debug] > Exec(sbtStashOnFailure, None, None)
+[debug] > Exec(onFailure loadFailed, None, None)
+[debug] > Exec(loadp, None, None)
+[info] welcome to sbt 1.4.4 (Oracle Corporation Java 1.8.0_112)
+[debug]       Load.loadUnit: plugins took 629.2327ms
+[debug]       Load.loadUnit: defsScala took 1.1144ms
+[debug] [Loading] Scanning directory C:\Users\master\.sbt\1.0\plugins
+[debug] [Loading] Found non-root projects 
+[debug] [Loading] Done in C:\Users\master\.sbt\1.0\plugins, returning: ()
+[debug] deducing auto plugins based on known facts Set(Atom(sbt.plugins.CorePlugin)) and clauses Clauses(List(Clause(Atom(sbt.plugins.JvmPlugin),Set(Atom(sbt.plugins.IvyPlugin))), Clause(Atom(sbt.ScriptedPlugin),Set(Atom(sbt.plugins.JvmPlugin))), Clause(Atom(sbt.plugins.SbtPlugin),Set(Atom(sbt.ScriptedPlugin))), Clause(Atom(sbt.plugins.SemanticdbPlugin),Set(Atom(sbt.plugins.JvmPlugin))), Clause(Atom(sbt.plugins.JUnitXmlReportPlugin),Set(Atom(sbt.plugins.JvmPlugin))), Clause(Atom(sbt.plugins.MiniDependencyTreePlugin),Set(Atom(sbt.plugins.JvmPlugin))), Clause(Atom(sbt.plugins.CorePlugin),Set(Atom(sbt.plugins.IvyPlugin))), Clause(Atom(sbt.plugins.IvyPlugin),Set(Atom(sbt.plugins.JvmPlugin))), Clause(Atom(sbt.plugins.JvmPlugin),Set(Atom(sbt.plugins.SemanticdbPlugin))), Clause(Atom(sbt.plugins.JvmPlugin),Set(Atom(sbt.plugins.JUnitXmlReportPlugin))), Clause(Atom(sbt.plugins.CorePlugin),Set(Atom(sbt.plugins.Giter8TemplatePlugin))), Clause(Atom(sbt.plugins.JvmPlugin),Set(Atom(sbt.plugins.MiniDependencyTreePlugin)))))
+[debug]   :: deduced result: Matched(sbt.plugins.CorePlugin,sbt.plugins.Giter8TemplatePlugin,sbt.plugins.IvyPlugin,sbt.plugins.JvmPlugin,sbt.plugins.MiniDependencyTreePlugin,sbt.plugins.JUnitXmlReportPlugin,sbt.plugins.SemanticdbPlugin)
+[debug] Plugins.deducer#function took 81.3187 ms
+[debug]           Load.resolveProject(global-plugins) took 109.5791ms
+[debug]         Load.loadTransitive: finalizeProject(Project(id global-plugins, base: C:\Users\master\.sbt\1.0\plugins, plugins: List(<none>))) took 282.5331ms
+[debug] [Loading] Done in C:\Users\master\.sbt\1.0\plugins, returning: (global-plugins)
+[debug]       Load.loadUnit: loadedProjectsRaw took 363.7558ms
+[debug]       Load.loadUnit: cleanEvalClasses took 0.4168ms
+[debug]     Load.loadUnit(file:/C:/Users/master/.sbt/1.0/plugins/, ...) took 1043.3438ms
+[debug]   Load.apply: load took 1706.8103ms
+[debug]   Load.apply: resolveProjects took 10.7317ms
+[debug]   Load.apply: finalTransforms took 149.5075ms
+[debug]   Load.apply: config.delegates took 18.2692ms
+[debug]   Load.apply: Def.make(settings)... took 10017.8688ms
+[debug]   Load.apply: structureIndex took 245.9308ms
+[debug]   Load.apply: mkStreams took 3.6279ms
+[info] loading global plugins from C:\Users\master\.sbt\1.0\plugins
+[debug] Running task... Cancel: Signal, check cycles: false, forcegc: true
+[debug] Load.defaultLoad until apply took 21646.3034ms
+[debug]           Load.loadUnit: plugins took 92.8182ms
+[debug]           Load.loadUnit: defsScala took 0.0126ms
+[debug] [Loading] Scanning directory C:\Users\master\COURSES\TinkoffFintech_Scala\git\eventorg_final_project\project
+[debug]             Load.loadUnit: mkEval took 16.7689ms
+[debug] [Loading] Found non-root projects 
+[debug] [Loading] Done in C:\Users\master\COURSES\TinkoffFintech_Scala\git\eventorg_final_project\project, returning: ()
+[debug] deducing auto plugins based on known facts Set(Atom(sbt.plugins.CorePlugin)) and clauses Clauses(List(Clause(Atom(sbt.plugins.JvmPlugin),Set(Atom(sbt.plugins.IvyPlugin))), Clause(Atom(sbt.ScriptedPlugin),Set(Atom(sbt.plugins.JvmPlugin))), Clause(Atom(sbt.plugins.SbtPlugin),Set(Atom(sbt.ScriptedPlugin))), Clause(Atom(sbt.plugins.SemanticdbPlugin),Set(Atom(sbt.plugins.JvmPlugin))), Clause(Atom(sbt.plugins.JUnitXmlReportPlugin),Set(Atom(sbt.plugins.JvmPlugin))), Clause(Atom(sbt.plugins.MiniDependencyTreePlugin),Set(Atom(sbt.plugins.JvmPlugin))), Clause(Atom(sbt.plugins.CorePlugin),Set(Atom(sbt.plugins.IvyPlugin))), Clause(Atom(sbt.plugins.IvyPlugin),Set(Atom(sbt.plugins.JvmPlugin))), Clause(Atom(sbt.plugins.JvmPlugin),Set(Atom(sbt.plugins.SemanticdbPlugin))), Clause(Atom(sbt.plugins.JvmPlugin),Set(Atom(sbt.plugins.JUnitXmlReportPlugin))), Clause(Atom(sbt.plugins.CorePlugin),Set(Atom(sbt.plugins.Giter8TemplatePlugin))), Clause(Atom(sbt.plugins.JvmPlugin),Set(Atom(sbt.plugins.MiniDependencyTreePlugin)))))
+[debug]   :: deduced result: Matched(sbt.plugins.CorePlugin,sbt.plugins.Giter8TemplatePlugin,sbt.plugins.IvyPlugin,sbt.plugins.JvmPlugin,sbt.plugins.MiniDependencyTreePlugin,sbt.plugins.JUnitXmlReportPlugin,sbt.plugins.SemanticdbPlugin)
+[debug] Plugins.deducer#function took 21.113 ms
+[info] loading settings for project eventorg_final_project-build from idea.sbt ...
+[debug]               Load.resolveProject(eventorg_final_project-build) took 26.1417ms
+[debug]             Load.loadTransitive: finalizeProject(Project(id eventorg_final_project-build, base: C:\Users\master\COURSES\TinkoffFintech_Scala\git\eventorg_final_project\project, plugins: List(<none>))) took 92.0815ms
+[debug] [Loading] Done in C:\Users\master\COURSES\TinkoffFintech_Scala\git\eventorg_final_project\project, returning: (eventorg_final_project-build)
+[debug]           Load.loadUnit: loadedProjectsRaw took 6886.1257ms
+[debug]           Load.loadUnit: cleanEvalClasses took 8.1118ms
+[debug]         Load.loadUnit(file:/C:/Users/master/COURSES/TinkoffFintech_Scala/git/eventorg_final_project/project/, ...) took 7042.0095ms
+[debug]       Load.apply: load took 7050.6855ms
+[debug]       Load.apply: resolveProjects took 0.2503ms
+[debug]       Load.apply: finalTransforms took 21.1642ms
+[debug]       Load.apply: config.delegates took 0.5809ms
+[debug]       Load.apply: Def.make(settings)... took 618.8035ms
+[debug]       Load.apply: structureIndex took 352.2606ms
+[debug]       Load.apply: mkStreams took 0.6252ms
+[info] loading project definition from C:\Users\master\COURSES\TinkoffFintech_Scala\git\eventorg_final_project\project
+[debug] Running task... Cancel: Signal, check cycles: false, forcegc: true
+[debug]     Load.loadUnit: plugins took 15427.5343ms
+[debug]     Load.loadUnit: defsScala took 0.0119ms
+[debug] [Loading] Scanning directory C:\Users\master\COURSES\TinkoffFintech_Scala\git\eventorg_final_project
+[debug]       Load.loadUnit: mkEval took 0.6808ms
+[debug] [Loading] Found root project eventorg_final_project w/ remaining 
+[debug] deducing auto plugins based on known facts Set(Atom(sbt.plugins.CorePlugin)) and clauses Clauses(List(Clause(Atom(sbt.plugins.JvmPlugin),Set(Atom(sbt.plugins.IvyPlugin))), Clause(Atom(sbt.ScriptedPlugin),Set(Atom(sbt.plugins.JvmPlugin))), Clause(Atom(sbt.plugins.SbtPlugin),Set(Atom(sbt.ScriptedPlugin))), Clause(Atom(sbt.plugins.SemanticdbPlugin),Set(Atom(sbt.plugins.JvmPlugin))), Clause(Atom(sbt.plugins.JUnitXmlReportPlugin),Set(Atom(sbt.plugins.JvmPlugin))), Clause(Atom(sbt.plugins.MiniDependencyTreePlugin),Set(Atom(sbt.plugins.JvmPlugin))), Clause(Atom(org.jetbrains.sbt.StructurePlugin),Set(Atom(sbt.plugins.JvmPlugin))), Clause(Atom(org.jetbrains.sbt.IdeaShellPlugin),Set(Atom(sbt.plugins.JvmPlugin))), Clause(Atom(org.jetbrains.sbt.indices.SbtIntellijIndicesPlugin),Set(Atom(sbt.plugins.JvmPlugin))), Clause(Atom(sbt.plugins.CorePlugin),Set(Atom(sbt.plugins.IvyPlugin))), Clause(Atom(sbt.plugins.IvyPlugin),Set(Atom(sbt.plugins.JvmPlugin))), Clause(Atom(sbt.plugins.JvmPlugin),Set(Atom(sbt.plugins.SemanticdbPlugin))), Clause(Atom(sbt.plugins.JvmPlugin),Set(Atom(sbt.plugins.JUnitXmlReportPlugin))), Clause(Atom(sbt.plugins.CorePlugin),Set(Atom(sbt.plugins.Giter8TemplatePlugin))), Clause(Atom(sbt.plugins.JvmPlugin),Set(Atom(sbt.plugins.MiniDependencyTreePlugin))), Clause(Atom(sbt.plugins.JvmPlugin),Set(Atom(org.jetbrains.sbt.StructurePlugin))), Clause(Atom(sbt.plugins.JvmPlugin),Set(Atom(org.jetbrains.sbt.IdeaShellPlugin))), Clause(And(Set(Atom(sbt.plugins.CorePlugin), Atom(sbt.plugins.JvmPlugin))),Set(Atom(org.jetbrains.sbt.indices.SbtIntellijIndicesPlugin)))))
+[debug]   :: deduced result: Matched(sbt.plugins.CorePlugin,sbt.plugins.Giter8TemplatePlugin,sbt.plugins.IvyPlugin,sbt.plugins.JvmPlugin,sbt.plugins.SemanticdbPlugin,org.jetbrains.sbt.indices.SbtIntellijIndicesPlugin,sbt.plugins.JUnitXmlReportPlugin,org.jetbrains.sbt.IdeaShellPlugin,org.jetbrains.sbt.StructurePlugin,sbt.plugins.MiniDependencyTreePlugin)
+[debug] Plugins.deducer#function took 6.1204 ms
+[info] loading settings for project eventorg_final_project from build.sbt ...
+[debug]         Load.resolveProject(eventorg_final_project) took 82.0488ms
+[debug]       Load.loadTransitive: finalizeProject(Project(id eventorg_final_project, base: C:\Users\master\COURSES\TinkoffFintech_Scala\git\eventorg_final_project, plugins: List(<none>))) took 95.2117ms
+[debug] [Loading] Done in C:\Users\master\COURSES\TinkoffFintech_Scala\git\eventorg_final_project, returning: (eventorg_final_project)
+[debug]     Load.loadUnit: loadedProjectsRaw took 4577.2009ms
+[debug]     Load.loadUnit: cleanEvalClasses took 23.6818ms
+[debug]   Load.loadUnit(file:/C:/Users/master/COURSES/TinkoffFintech_Scala/git/eventorg_final_project/, ...) took 20084.5474ms
+[debug] Load.apply: load took 20091.2148ms
+[debug] Load.apply: resolveProjects took 0.213ms
+[debug] Load.apply: finalTransforms took 47.2656ms
+[debug] Load.apply: config.delegates took 1.2789ms
+[debug] Load.apply: Def.make(settings)... took 260.8123ms
+[debug] Load.apply: structureIndex took 44.4328ms
+[debug] Load.apply: mkStreams took 0.8913ms
+[info] set current project to eventorg_final_project (in build file:/C:/Users/master/COURSES/TinkoffFintech_Scala/git/eventorg_final_project/)
+[warn] there's a key that's not used by any other settings/tasks:
+[warn]  
+[warn] * ThisBuild / name
+[warn]   +- C:\Users\master\COURSES\TinkoffFintech_Scala\git\eventorg_final_project\build.sbt:9
+[warn]  
+[warn] note: a setting might still be used by a command; to exclude a key from this `lintUnused` check
+[warn] either append it to `Global / excludeLintKeys` or call .withRank(KeyRanks.Invisible) on the key
+[debug] > Exec(sbtPopOnFailure, None, None)
+[debug] > Exec(resumeFromFailure, None, None)
+[debug] > Exec(notifyUsersAboutShell, None, None)
+[debug] > Exec(iflast shell, None, None)
+[debug] > Exec(; set ideaPort in Global := 62014 ; idea-shell, None, None)
+[debug] > Exec(set ideaPort in Global := 62014, None, None)
+[info] Defining Global / ideaPort
+[info] The new value will be used by Compile / compile, Test / compile
+[debug] Defining 
+[debug] 	Global / ideaPort
+[debug] 
+[debug] The new value will be used by 
+[debug] 	Compile / compile
+[debug] 	Test / compile
+[info] Reapplying settings...
+[info] set current project to eventorg_final_project (in build file:/C:/Users/master/COURSES/TinkoffFintech_Scala/git/eventorg_final_project/)
+[debug] > Exec(idea-shell, None, None)
