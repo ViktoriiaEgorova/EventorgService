@@ -1,3 +1,3 @@
 # EventorgService
 
-Web service that allows to organizer events and register to them.
+Web service that allows to organize events and register to them.
