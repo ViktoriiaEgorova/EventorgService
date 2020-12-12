@@ -9,8 +9,8 @@ class UserApi(userService: UserService) {
   import de.heikoseeberger.akkahttpcirce.ErrorAccumulatingCirceSupport._
 
   private val registerUserRoute: Route = (post & path("register" / "user")){
-    parameters(Symbol("name").as[String], Symbol("email").as[String], Symbol("region").as[String]){
-      (name: String, email: String, region: String) => complete(userService.registerUserByName(name, email, region))
+    parameters(Symbol("name").as[String], Symbol("email").as[String], Symbol("region").as[String], Symbol("password").as[String]){
+      (name: String, email: String, region: String, password: String) => complete(userService.registerUserByName(name, email, region, password))
     }
   }
 
@@ -33,7 +33,7 @@ class UserApi(userService: UserService) {
   }
 
   private val getEventsByDateRoute: Route = (get & path("get" / "events" / "date" )){
-    entity(as[String]){date => complete(userService.findEventByDate(date))}
+    parameters(Symbol("d").as[Int], Symbol("m").as[Int], Symbol("y").as[Int]){(d, m, y) => complete(userService.findEventByDate(y.toString+"-"+m.toString+"-"+d.toString))}
   }
 
   private val getEventsByRegionRoute: Route = (get & path("get" / "events" / "region" )){
@@ -53,6 +53,29 @@ class UserApi(userService: UserService) {
     }
   }
 
-  val route: Route = registerUserRoute ~ registerForEventRoute ~ getUserRoute ~ getEventRoute ~ getAllEventsRegisteredRoute ~ getEventsByDateRoute ~ getEventsByRegionRoute ~ getEventsByTopicRoute ~ getRecommendationsRoute ~ addTopicRoute
+  private val checkMyPasswordRoute: Route = (get & path("check" / "password" / LongNumber)) { userId =>
+    entity(as[String]) { pswrd => complete(userService.checkPassword(userId, pswrd))
+    }
+  }
+
+  private val addReviewRoute: Route = (post & path("add" / "review" / LongNumber / LongNumber)) {
+    (userId, eventId) => entity(as[String]){
+      review => complete(userService.addReview(userId, eventId, review))
+    }
+  }
+
+  private val getReviewsByEventId: Route = (get & path("get" / "reviews" / "event" / LongNumber )){
+    {eventId => complete(userService.getReviewsByEventId(eventId))}
+  }
+
+  private val getReviewsByUserId: Route = (get & path("get" / "reviews" / LongNumber )){
+    {userId => complete(userService.getReviewsByUserId(userId))}
+  }
+
+  private val getNotificationsByUserId: Route = (get & path("get" / "notifications" / LongNumber )){
+    {userId => complete(userService.getNotificationsByUserId(userId))}
+  }
+
+  val route: Route = registerUserRoute ~ registerForEventRoute ~ getUserRoute ~ getEventRoute ~ getAllEventsRegisteredRoute ~ getEventsByDateRoute ~ getEventsByRegionRoute ~ getEventsByTopicRoute ~ getRecommendationsRoute ~ addTopicRoute ~ checkMyPasswordRoute ~ addReviewRoute ~ getReviewsByEventId ~ getReviewsByUserId ~ getNotificationsByUserId
 
 }

@@ -6,7 +6,7 @@ import tables.EventQueryRepository.AllEvents
 import tables.EventUserQueryRepository.AllEventUsers
 import tables.OrganizerQueryRepository.AllOrganizers
 import tables.UserQueryRepository.AllUsers
-import tables.{EventQueryRepository, EventUserQueryRepository, OrganizerQueryRepository, UserQueryRepository}
+import tables.{EventQueryRepository, EventUserQueryRepository, OrganizerQueryRepository, UserPasswordQueryRepository, UserQueryRepository, EventReviewQueryRepository, UserNotificationQueryRepository}
 
 package object storage {
 
@@ -16,9 +16,11 @@ package object storage {
     keepAliveConnection = true
   )
 
-  private val initSchema =
-    (EventQueryRepository.AllEvents.schema ++ OrganizerQueryRepository.AllOrganizers.schema ++ UserQueryRepository.AllUsers.schema ++ EventUserQueryRepository.AllEventUsers.schema).create
+//  private val initSchema =
+//    (EventQueryRepository.AllEvents.schema ++ OrganizerQueryRepository.AllOrganizers.schema ++ UserQueryRepository.AllUsers.schema ++ EventUserQueryRepository.AllEventUsers.schema).create
 
+  private val initSchema =
+    (EventQueryRepository.AllEvents.schema ++ OrganizerQueryRepository.AllOrganizers.schema ++ UserQueryRepository.AllUsers.schema ++ EventUserQueryRepository.AllEventUsers.schema ++ UserPasswordQueryRepository.AllUsersPasswords.schema ++ EventReviewQueryRepository.AllEventReviews.schema ++ UserNotificationQueryRepository.AllUserNotifications.schema).create
 
 
   db.run(initSchema)

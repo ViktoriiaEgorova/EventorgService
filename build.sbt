@@ -38,7 +38,9 @@ lazy val `eventorg_final_project` = project
       "org.slf4j" % "slf4j-nop" % "1.6.4",
       //"org.slf4j" % "slf4j-api" % "1.7.25",
       "com.typesafe.slick" %% "slick-hikaricp" % "3.3.3",
-      "com.h2database" % "h2" % "1.4.200"
+      "com.h2database" % "h2" % "1.4.200",
+
+      "org.mindrot" % "jbcrypt" % "0.3m"
 
 
     )

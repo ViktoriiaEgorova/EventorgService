@@ -20,5 +20,7 @@ trait UserStorage {
 
   def updateTopics(userId: Long, new_topics: String): Future[Int]
 
+  def sendNotificationToAllUsers(orgId: Long): Future[Int]
+
 
 }

@@ -52,6 +52,8 @@ trait OrganizerService {
    */
   def showAllCreatedEvents(orgId: Long): Future[Seq[Event]]
 
+  def sendNotificationToAll(orgId: Long): Future[Int]
+
 
 
 }

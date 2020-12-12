@@ -3,27 +3,27 @@ package logic
 import java.sql.SQLException
 
 import api.{EventNotFoundException, EventorgException, NoInterestTopicException, RegistrationForEventException, UnknownEventorgException, UserAlreadyRegisteredException, UserAlreadyRegisteredForEventException, UserRegistrationException}
-import storage.{EventStorage, EventUserStorage, UserStorage}
-import tables.{Event, EventUser, User}
+import storage.{EventReviewStorage, EventStorage, EventUserStorage, UserNotificationStorage, UserPasswordStorage, UserStorage}
+import tables.{Event, EventReview, EventUser, User, UserNotification, UserPassword}
 
 import scala.concurrent.Future
 import scala.concurrent.ExecutionContext.Implicits.global
 
-class UserServiceImpl(eventStorage: EventStorage, userStorage: UserStorage, eventUserStorage: EventUserStorage) extends UserService {
+class UserServiceImpl(eventStorage: EventStorage, userStorage: UserStorage, eventUserStorage: EventUserStorage, userPasswordStorage: UserPasswordStorage, eventReviewStorage: EventReviewStorage, userNotification: UserNotificationStorage) extends UserService {
 
-  override def registerUserByName(name: String, email: String, region: String): Future[Option[User]] = {
-
-    val f = for {
-      a <- userStorage.addUser(name, email, region)
-      b <- userStorage.getUserByEmail(email)
-    } yield b
-
-    f.recover {
-      case ex: SQLException => throw UserAlreadyRegisteredException(email)
-      //case ex: SQLException => throw UserRegistrationException(ex.getMessage)
-    }
-
-  }
+//  override def registerUserByName(name: String, email: String, region: String): Future[Option[User]] = {
+//
+//    val f = for {
+//      a <- userStorage.addUser(name, email, region)
+//      b <- userStorage.getUserByEmail(email)
+//    } yield b
+//
+//    f.recover {
+//      case ex: SQLException => throw UserAlreadyRegisteredException(email)
+//      //case ex: SQLException => throw UserRegistrationException(ex.getMessage)
+//    }
+//
+//  }
 
 
   override def registerForEvent(userId: Long, eventId: Long): Future[Int] = {
@@ -110,5 +110,52 @@ class UserServiceImpl(eventStorage: EventStorage, userStorage: UserStorage, even
     }
 
 
+  }
+
+  override def registerUserByName(name: String, email: String, region: String, password: String): Future[Option[User]] = {
+    val f = for {
+      a <- userStorage.addUser(name, email, region)
+      d <- userStorage.getUserByEmail(email)
+      c <- userPasswordStorage.addPassword(d.get.id_user.get, password)
+      b <- userStorage.getUserByEmail(email)
+    } yield b
+
+    f.recover {
+      case ex: SQLException => throw UserAlreadyRegisteredException(email)
+      //case ex: SQLException => throw UserRegistrationException(ex.getMessage)
+    }
+  }
+
+  override def checkPassword(userId: Long, password: String): Future[Boolean] = {
+    userPasswordStorage.checkPassword(userId, password)
+  }
+
+
+  override def getReviewsByUserId(userId: Long): Future[Seq[EventReview]] = {
+    eventReviewStorage.listReviewsByUserId(userId)
+  }
+
+
+  override def getReviewsByEventId(eventId: Long): Future[Seq[EventReview]] = {
+    eventReviewStorage.listReviewsByEventId(eventId)
+  }
+
+
+  override def addReview(eventId: Long, userId: Long, review: String): Future[Seq[EventReview]] = {
+    val f = for {
+      _ <- eventReviewStorage.addEventReview(eventId, userId, review)
+      num <- eventReviewStorage.listReviewsByEventId(eventId)
+      _ <- eventStorage.updateNumberReviews(eventId, num.length)
+      result <- eventReviewStorage.listReviewsByUserId(userId)
+    } yield result
+
+    f.recover{
+      //case ex: UserAlreadyRegisteredForEventException => throw UserAlreadyRegisteredForEventException(eventId, userId)
+      case ex: SQLException => throw UnknownEventorgException(ex.getMessage)
+    }
+  }
+
+  override def getNotificationsByUserId(userId: Long): Future[Seq[UserNotification]] = {
+    userNotification.listNotificationsByUserId(userId)
   }
 }

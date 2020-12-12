@@ -21,7 +21,7 @@ case class Event(id_event: Option[Long] = None,
                  description: String,
                  region: String,
                  visitors: Int = 0,
-                 reviews: Option[String] = None
+                 reviews: Int = 0
                 )
 
 
@@ -53,7 +53,7 @@ class EventTable(tag: Tag) extends Table[Event](tag, "EVENTS") {
 
   def visitors: Rep[Int] = column("VISITORS")
 
-  def reviews: Rep[Option[String]] = column("REVIEWS")
+  def reviews: Rep[Int] = column("REVIEWS")
 //
 //  def organizer: ForeignKeyQuery[OrganizerTable, Organizer] =
 //    foreignKey("ORGANIZER_FK", orgId, OrganizerQueryRepository.AllOrganizers)(_.orgId)
@@ -190,7 +190,13 @@ object EventQueryRepository {
       .result
   }
 
+  def updateNumberReviews(eventId: Long, new_reviews: Int): DIO[Int, Effect.Write] = {
+    AllEvents
+      .filter(_.eventId === eventId)
+      .map(_.reviews)
+      .update(new_reviews)
 
+  }
 
 
 

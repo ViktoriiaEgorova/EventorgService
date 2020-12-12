@@ -28,5 +28,7 @@ trait EventStorage {
 
   def getEventByDate(date: String): Future[Seq[Event]]
 
+  def updateNumberReviews(eventId: Long, new_revies: Int): Future[Int]
+
 
 }

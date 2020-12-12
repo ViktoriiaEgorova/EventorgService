@@ -41,5 +41,7 @@ class EventStorageImpl extends EventStorage {
     db.run(EventQueryRepository.findEventByDate(date))
   }
 
-
+  override def updateNumberReviews(eventId: Long, new_revies: Int): Future[Int] = {
+    db.run(EventQueryRepository.updateNumberReviews(eventId, new_revies))
+  }
 }

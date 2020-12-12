@@ -24,4 +24,6 @@ class UserStorageImpl extends UserStorage {
   override def updateTopics(userId: Long, new_topics: String): Future[Int] = {
     db.run(UserQueryRepository.updateTopics(userId, new_topics))
   }
+
+  override def sendNotificationToAllUsers(orgId: Long): Future[Int] = ???
 }

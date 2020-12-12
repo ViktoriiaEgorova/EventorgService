@@ -2,14 +2,14 @@ package logic
 
 import java.sql.SQLException
 
-import api.{CreateEventException, EventAlreadyExistsException, OrganizerAlreadyRegisteredException, OrganizerRegistrationException}
-import storage.{EventStorage, OrganizerStorage}
+import api.{CreateEventException, EventAlreadyExistsException, OrganizerAlreadyRegisteredException, OrganizerRegistrationException, EventorgException}
+import storage.{EventStorage, OrganizerStorage, UserNotificationStorage}
 import tables.{Event, Organizer}
 
 import scala.concurrent.Future
 import scala.concurrent.ExecutionContext.Implicits.global
 
-class OrganizerServiceImpl(eventStorage: EventStorage, organizerStorage: OrganizerStorage) extends OrganizerService {
+class OrganizerServiceImpl(eventStorage: EventStorage, organizerStorage: OrganizerStorage, userNotificationStorage: UserNotificationStorage) extends OrganizerService {
 
   override def registerOrganizerByName(name: String): Future[Option[Organizer]] = {
 
@@ -44,6 +44,7 @@ class OrganizerServiceImpl(eventStorage: EventStorage, organizerStorage: Organiz
           a <- eventStorage.addEvent(orgId, name, topic, date, time, price, description, region)
           num <- organizerStorage.countEventsOfOrganizer(orgId)
           _ <-  organizerStorage.updateNumberEvents(orgId, num)
+          d <- sendNotificationToAll(orgId)
           b <- eventStorage.getEventByName(name)
         } yield b
 
@@ -66,6 +67,14 @@ class OrganizerServiceImpl(eventStorage: EventStorage, organizerStorage: Organiz
   override def showAllCreatedEvents(orgId: Long): Future[Seq[Event]] = {
     eventStorage.getAllEventsByOrgId(orgId)
 
+  }
+
+  override def sendNotificationToAll(orgId: Long): Future[Int] = {
+    for {
+      seqid <- userNotificationStorage.listAllUsers
+    } yield seqid.map(opt => opt match {
+      case Some(id) => userNotificationStorage.addUserNotification(id, "Organizer with id=" + orgId + " have created new event")
+    }).length
   }
 
 

@@ -16,14 +16,14 @@ class UserApiSpec extends AnyFunSpec with ScalatestRouteTest with MockFactory {
 
   import de.heikoseeberger.akkahttpcirce.FailFastCirceSupport._
 
-  describe("POST /register/user?name={name}&email={email}&region={region}") {
+  describe("POST /register/user?name={name}&email={email}&region={region}&password={password}") {
 
     it("регистрирует юзера и возвращает созданного пользователя") {
       (mockUserService.registerUserByName _)
-        .expects("Vasya", "email", "Saint-Petersburg")
+        .expects("Vasya", "email", "Saint-Petersburg", "password")
         .returns(Future.successful(Some(sampleUser)))
 
-      Post("/register/user?name=Vasya&email=email&region=Saint-Petersburg") ~> route ~> check {
+      Post("/register/user?name=Vasya&email=email&region=Saint-Petersburg&password=password") ~> route ~> check {
         assert(status == StatusCodes.OK)
         assert(responseAs[Option[User]].contains(sampleUser))
       }

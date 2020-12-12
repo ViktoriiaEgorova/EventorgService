@@ -44,6 +44,10 @@ final case class NoInterestTopicException() extends EventorgException(s"You are 
 
 final case class UnknownEventorgException(msg: String) extends EventorgException(msg)
 
+final case class UserAlreadyHavePasswordException() extends EventorgException("User already has password")
+
+final case class UserOrEventNotFoundException() extends EventorgException("User is not register for event")
+
 
 object EventorgExceptionHandler {
   import de.heikoseeberger.akkahttpcirce.FailFastCirceSupport._

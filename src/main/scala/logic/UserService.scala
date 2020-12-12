@@ -1,20 +1,32 @@
 package logic
 
-import tables.{Event, EventUser, User}
+import sun.security.util.Password
+import tables.{Event, EventReview, EventUser, User, UserNotification, UserPassword}
 
 import scala.concurrent.Future
 
 trait UserService {
 
+//  /**
+//   * Регистрация пользователя
+//   *
+//   * @param name название пользователя
+//   * @param email почтовый адрес пользователя
+//   * @param region регион пользователя
+//   * @return созданный пользователь
+//   */
+//  def registerUserByName(name: String, email: String, region: String): Future[Option[User]]
+
   /**
-   * Регистрация пользователя
+   * Регистрация пользователя с паролем
    *
    * @param name название пользователя
    * @param email почтовый адрес пользователя
    * @param region регион пользователя
+   * @param password пароль
    * @return созданный пользователь
    */
-  def registerUserByName(name: String, email: String, region: String): Future[Option[User]]
+  def registerUserByName(name: String, email: String, region: String, password: String): Future[Option[User]]
 
   /**
    * Регистрация пользователя на мероприятие
@@ -90,6 +102,40 @@ trait UserService {
    */
   def addTopic(userId: Long, topic: String):  Future[Option[User]]
 
+  /**
+   * Показывает пользователю его пароль
+   *
+   * @param userId
+   * @param password
+   * @return обновленный пользователь
+   */
+  def checkPassword(userId: Long, password: String): Future[Boolean]
+
+  /**
+   * Показывает пользователю все его отзывы
+   *
+   * @param userId
+   * @return обновленный пользователь
+   */
+  def getReviewsByUserId(userId: Long): Future[Seq[EventReview]]
+
+  /**
+   * Показывает пользователю все его отзывы
+   *
+   * @param eventId
+   * @return обновленный пользователь
+   */
+  def getReviewsByEventId(eventId: Long): Future[Seq[EventReview]]
+
+  /**
+   * Добавляет отзыв
+   *
+   * @param userId
+   * @return обновленный пользователь
+   */
+  def addReview(eventId: Long, userId: Long, review: String): Future[Seq[EventReview]]
+
+  def getNotificationsByUserId(userId: Long): Future[Seq[UserNotification]]
 
 
 }
